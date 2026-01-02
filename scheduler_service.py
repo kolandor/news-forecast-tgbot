@@ -96,8 +96,11 @@ async def execute_schedule(bot: Bot, schedule_id: int, manual_trigger: bool = Fa
 
     countries_str = ",".join(valid_countries)
 
+
     # 4. Fetch Data
     try:
+        # NOTE: Removed Mock mode logic entirely to ensure we use api_client.fetch_forecast
+        
         data = await api_client.fetch_forecast(
             countries=countries_str,
             topics=schedule['topics'],
@@ -105,6 +108,7 @@ async def execute_schedule(bot: Bot, schedule_id: int, manual_trigger: bool = Fa
             time_horizon=schedule['time_horizon'],
             depth=schedule['depth']
         )
+
         
         if not data:
             error_msg = "API returned no data or failed."
