@@ -1,0 +1,6 @@
+python-telegram-bot
+httpx
+APScheduler
+pydantic
+python-dotenv
+playwright
